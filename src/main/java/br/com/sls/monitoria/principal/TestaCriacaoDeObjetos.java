@@ -1,8 +1,10 @@
 package br.com.sls.monitoria.principal;
 
+import java.util.*;
+
 import br.com.sls.monitoria.modelo.CartaoRefeicao;
 import br.com.sls.monitoria.modelo.Mercadoria;
-import java.util.Scanner;
+import br.com.sls.monitoria.modelo.PessoaFisica;
 
 public class TestaCriacaoDeObjetos {
 	
@@ -34,18 +36,31 @@ public class TestaCriacaoDeObjetos {
 		int cartaoTemp;
 		String senhaTemp;
 		double valorTemp;
+		double valorCompra = 0;
 		
+		List <Mercadoria> mercadoria = new ArrayList ();
 		Mercadoria arroz = new Mercadoria (5, "1kg de arroz");
 		Mercadoria trigo = new Mercadoria (3, "1kg de trigo");
 		Mercadoria manteiga = new Mercadoria (6, "500g de manteiga");
 		
-		CartaoRefeicao cartao1 = new CartaoRefeicao();
-		cartao1.setNome("Giovani");
-		cartao1.setNumeracao(12345);
-		cartao1.setSaldo(420.15);
-		cartao1.setSenha("9999");
+		mercadoria.add (arroz);
+		mercadoria.add (trigo);
+		mercadoria.add (manteiga);
 		
+		System.out.println("LISTA DE COMPRAS");
+		for(Mercadoria mercadoria2 : mercadoria) {
+			System.out.println("\nItem: " + mercadoria2.getDescricao());
+			System.out.println("\nPreco: " + mercadoria2.getPreco() + "\n");
+			valorCompra = mercadoria2.getPreco();
+		}
 		
+		CartaoRefeicao cartao = new CartaoRefeicao();
+		cartao.setNome("Giovani");
+		cartao.setNumeracao(12345);
+		cartao.setSaldo(420.15);
+		cartao.setSenha("9999");
+		
+		PessoaFisica pessoa = new PessoaFisica("Giovani", 00011122265, cartao);
 		
 		System.out.println("\nInsira o numero do cartao: ");
 		cartaoTemp = scanner.nextInt();
@@ -54,7 +69,9 @@ public class TestaCriacaoDeObjetos {
 		System.out.println("\nInsira o valor da mercadoria: ");
 		valorTemp = scanner.nextDouble();
 		
-		
+		if (cartaoTemp == pessoa.cartaoRefeicao.getNumeracao()) {
+			
+		}
 	}
 
 }
